@@ -187,3 +187,39 @@ bool String::operator>=(const String& other) const
 {
     return charsVector_ >= other.charsVector_;
 }
+
+bool String::operator==(const char* charsArray) const
+{
+    String temp(charsArray);
+    return charsVector_ == temp.charsVector_;
+}
+
+bool String::operator!=(const char* charsArray) const
+{
+    String temp(charsArray);
+    return charsVector_ != temp.charsVector_;
+}
+
+bool String::operator<(const char* charsArray) const
+{
+    String temp(charsArray);
+    return charsVector_ < temp.charsVector_;
+}
+
+bool String::operator>(const char* charsArray) const
+{
+    String temp(charsArray);
+    return charsVector_ > temp.charsVector_;
+}
+
+bool String::operator<=(const char* charsArray) const
+{
+    String temp(charsArray);
+    return charsVector_ <= temp.charsVector_;
+}
+
+bool String::operator>=(const char* charsArray) const
+{
+    String temp(charsArray);
+    return charsVector_ >= temp.charsVector_;
+}

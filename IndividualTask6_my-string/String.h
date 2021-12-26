@@ -12,7 +12,7 @@ public:
     String();
     String(const String&) = default;
     String(String&&) noexcept;
-    explicit String(const char*);
+    String(const char*);
     String& operator=(const String&);
     String& operator=(String&&) noexcept;
     String& operator=(const char*);
@@ -36,6 +36,12 @@ public:
     bool operator>(const String&) const;
     bool operator<=(const String&) const;
     bool operator>=(const String&) const;
+    bool operator==(const char*) const;
+    bool operator!=(const char*) const;
+    bool operator<(const char*) const;
+    bool operator>(const char*) const;
+    bool operator<=(const char*) const;
+    bool operator>=(const char*) const;
 
 private:
     Vector<char> charsVector_;
