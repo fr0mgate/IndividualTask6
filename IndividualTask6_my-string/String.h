@@ -39,7 +39,7 @@ public:
 
 private:
     Vector<char> charsVector_;
-    static const size_t LIMIT = 80;
+    static const size_t LIMIT = 200;
 };
 
 #endif // INDIVIDUALTASK6_STRING_H
