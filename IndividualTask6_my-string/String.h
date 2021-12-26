@@ -9,7 +9,7 @@
 class String
 {
 public:
-    String() = default;
+    String();
     String(const String&) = default;
     String(String&&) noexcept;
     explicit String(const char*);

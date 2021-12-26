@@ -27,6 +27,7 @@ public:
     [[nodiscard]] bool empty() const;
     [[nodiscard]] T* getArrayLink() const;
     void pushBack(const T&);
+    void popBack();
     void clear();
     void selectionSort();
 
@@ -156,6 +157,14 @@ void Vector<T>::pushBack(const T& element)
     if (size_ >= capacity_)
         addMemory();
     array_[size_++] = element;
+}
+
+template<typename T>
+void Vector<T>::popBack()
+{
+    T temp;
+    array_[size_] = std::move(temp);
+    size_--;
 }
 
 template<typename T>

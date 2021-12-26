@@ -1,6 +1,11 @@
 #include "String.h"
 #include <utility>
 
+String::String()
+{
+    charsVector_.pushBack('\0');
+}
+
 String::String(String&& other) noexcept
     : charsVector_(std::move(other.charsVector_))
 {}
@@ -12,6 +17,7 @@ String::String(const char* charsArray)
         charsVector_.pushBack(charsArray[i]);
         i++;
     }
+    charsVector_.pushBack('\0');
 }
 
 String& String::operator=(const String& other)
@@ -34,27 +40,31 @@ String& String::operator=(const char* charsArray)
         charsVector_.pushBack(charsArray[i]);
         i++;
     }
+    charsVector_.pushBack('\0');
     return *this;
 }
 
 [[nodiscard]] size_t String::length() const
 {
-    return charsVector_.size();
+    return charsVector_.size() - 1;
 }
 
 [[nodiscard]] bool String::empty() const
 {
-    return charsVector_.empty();
+    return charsVector_.size() == 1;
 }
 
 void String::pushBack(char element)
 {
+    charsVector_.popBack();
     charsVector_.pushBack(element);
+    charsVector_.pushBack('\0');
 }
 
 void String::clear()
 {
     charsVector_.clear();
+    charsVector_.pushBack('\0');
 }
 
 const char* String::getCharsArray()
@@ -74,7 +84,7 @@ Vector<String> String::split(char divider)
 {
     Vector<String> stringsList;
     String temp;
-    for (size_t i = 0; i < charsVector_.size(); i++) {
+    for (size_t i = 0; i < length(); i++) {
         if (charsVector_[i] == divider) {
             if (!temp.empty()) {
                 stringsList.pushBack(temp);
@@ -94,7 +104,7 @@ Vector<String> String::split(const String& dividers)
     Vector<String> stringsList;
     String temp;
     bool isDivider = false;
-    for (size_t i = 0; i < charsVector_.size(); i++) {
+    for (size_t i = 0; i < length(); i++) {
         for (size_t j = 0; j < dividers.length(); j++) {
             if (charsVector_[i] == dividers[j]) {
                 isDivider = true;
@@ -132,7 +142,7 @@ std::istream& operator>>(std::istream& input, String& string)
     if (input) {
         size_t i = 0;
         while (temp[i] != '\0') {
-            string.charsVector_.pushBack(temp[i]);
+            string.pushBack(temp[i]);
             i++;
         }
     }
