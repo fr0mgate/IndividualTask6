@@ -54,7 +54,7 @@ int main()
             if (entryData[3].length() != 5 && entryData[3][2] != '/')
                 throw std::invalid_argument("Срок действия должен быть записан в формате \"mm/yy\"!");
 
-            BankCard card(entryData[0], entryData[1], entryData[2], entryData[3].substr(0, 2),
+            BankCard card(entryData[1], entryData[0], entryData[2], entryData[3].substr(0, 2),
                           entryData[3].substr(3, 5));
             bankCardsList.pushBack(card);
         }

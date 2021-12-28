@@ -35,8 +35,8 @@ public:
     bool operator>=(const BankCard&) const;
 
 private:
-    std::string holderName_;
     std::string holderSurname_;
+    std::string holderName_;
     std::string number_;
     std::string validityPeriodMonth_;
     std::string validityPeriodYear_;

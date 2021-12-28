@@ -117,8 +117,7 @@ Vector<T>& Vector<T>::operator=(Vector<T>&& other) noexcept
 template<typename T>
 Vector<T>::~Vector()
 {
-    if (capacity_ != 0)
-        delete[] array_;
+    delete[] array_;
 }
 
 template<typename T>

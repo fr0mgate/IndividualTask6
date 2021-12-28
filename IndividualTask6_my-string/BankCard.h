@@ -35,8 +35,8 @@ public:
     bool operator>=(const BankCard&) const;
 
 private:
-    String holderName_;
     String holderSurname_;
+    String holderName_;
     String number_;
     String validityPeriodMonth_;
     String validityPeriodYear_;
