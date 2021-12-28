@@ -79,7 +79,7 @@ void BankCard::setValidityPeriodYear(const String& validityPeriodYear)
 
 std::ostream& operator<<(std::ostream& output, const BankCard& card)
 {
-    output << card.holderName_ << ' ' << card.holderSurname_ << ' ' << card.number_
+    output << card.holderSurname_ << ' ' << card.holderName_  << ' ' << card.number_
            << ' ' << card.validityPeriodMonth_ << '/' << card.validityPeriodYear_;
 
     return output;
